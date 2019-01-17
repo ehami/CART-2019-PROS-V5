@@ -50,6 +50,9 @@
 #define LEFT_LIFT_MOTOR_PORT 3
 #define RIGHT_LIFT_MOTOR_PORT 4
 #define ACTUATOR_MOTOR_PORT 5
+#define SHOOTER_MOTOR_PORT 6
+#define LEFT_BACK_WHEELS_MOTOR_PORT 7
+#define RIGHT_BACK_WHEELS_MOTOR_PORT 8
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

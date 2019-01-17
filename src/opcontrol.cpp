@@ -21,18 +21,21 @@ void opcontrol() {
 
   int power;
   int turn;
+  double multiple = 1.0;
 
   while (true) {
     // Drive Wheels
     power = master.get_analog(ANALOG_LEFT_Y);
     turn = master.get_analog(ANALOG_RIGHT_X);
-    pros::lcd::print(4, "p:%d t:%d/n", power, turn);
+    pros::lcd::print(4, "p:%d t:%d", power, turn);
+    pros::lcd::print(5, "%f", multiple);
 
     if (master.get_digital(DIGITAL_B)) {
       brakeDriveWheels();
     } else if (abs(power) > 5 || abs(turn) > 5) {
       unBrakeDriveWheels();
-      setDriveWheelsToPower(power + turn, power - turn);
+      setDriveWheelsToPower((power * multiple + fabs(multiple) * turn),
+                            (power * multiple - fabs(multiple) * turn));
     } else {
       setDriveWheelsToPower(0, 0);
     }
@@ -40,7 +43,7 @@ void opcontrol() {
     if (master.get_digital(DIGITAL_L1)) {
       unBrakeLift();
       selLiftToVelocity(200);
-    } else if (master.get_digital(DIGITAL_R1)) {
+    } else if (master.get_digital(DIGITAL_L2)) {
       unBrakeLift();
       selLiftToVelocity(-200);
     } else {
@@ -51,6 +54,36 @@ void opcontrol() {
       turnActuator(-180);
     } else if (master.get_digital_new_press(DIGITAL_RIGHT)) {
       turnActuator(180);
+    } else if (master.get_digital(DIGITAL_A)) {
+      moveActuatorVelocity(20);
+    } else if (master.get_digital(DIGITAL_Y)) {
+      moveActuatorVelocity(-20);
+    } else if (master.get_digital(DIGITAL_B)) {
+      moveActuatorVelocity(0);
+    }
+
+    if (master.get_digital_new_press(DIGITAL_X)) {
+      if (multiple == 1.0) {
+        multiple = 0.40;
+      } else if (multiple == -1.0) {
+        multiple = -0.40;
+      } else if (multiple = 0.4) {
+        multiple = 1.0;
+      } else if (multiple = -0.4) {
+        multiple = -1.0;
+      }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_UP)) {
+      if (multiple == 1.0) {
+        multiple = -1.0;
+      } else if (multiple == -1.0) {
+        multiple = 1.0;
+      } else if (multiple = 0.4) {
+        multiple = -0.4;
+      } else if (multiple = -0.4) {
+        multiple = 0.4;
+      }
     }
 
     pros::delay(20);

@@ -12,10 +12,30 @@
  * from where it left off.
  */
 void autonomous() {
-    printf("Auton started\n");
-    driveForDistance(10.0, 10.0);
-    while (!atDistanceDriveGoal(10)) {
-        pros::delay(20);
-    }
-    printf("Auton ended\n");
+  printf("Auton started\n");
+
+  bool isAutonEnabled = true;
+
+  if (isAutonEnabled) {
+    pros::lcd::set_text(4, "Auton Enabled. Starting.");
+    shootBall();
+    pros::delay(3000);
+    /*driveForDistance(1450, 1450);
+    pros::delay(3000);
+
+    setLiftToPosition(1800);
+    pros::delay(3000);
+
+    turnActuator(180);
+    driveForDistance(-200, -200);
+    pros::delay(2000);
+
+    setLiftToPosition(-1800);
+    pros::delay(3000);
+
+    driveForDistance(-600, -600);
+    pros::delay(3000);*/
+  }
+
+  printf("Auton ended\n");
 }

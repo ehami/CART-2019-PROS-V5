@@ -38,3 +38,7 @@ void brakeLift();
 void unBrakeLift();
 
 void turnActuator(int degrees);
+
+void moveActuatorVelocity(int velocity);
+
+void shootBall();
