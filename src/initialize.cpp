@@ -11,14 +11,13 @@ void on_center_button() {
   initMotors();
 }
 
+void on_left_button() {
+  selection = (selection - 1) % 6;
+  pros::lcd::set_text(2, titles[selection]);
+}
 void on_right_button() {
-  static bool pressed = false;
-  pressed = !pressed;
-  if (pressed) {
-    pros::lcd::set_text(2, "Auton Enabled.");
-  } else {
-    pros::lcd::set_text(2, "Auton Disabled.");
-  }
+  selection = (selection + 1) % 6;
+  pros::lcd::set_text(2, titles[selection]);
 }
 
 /**
@@ -33,9 +32,13 @@ void initialize() {
 
   // Sets a callback function for the buttons
   pros::lcd::register_btn1_cb(on_center_button);
+  pros::lcd::register_btn0_cb(on_left_button);
   pros::lcd::register_btn2_cb(on_right_button);
 
   pros::lcd::set_text(1, "Initialized");
+
+  pros::lcd::set_text(2, titles[selection]);
+
   printf("Init finished\n");
 }
 

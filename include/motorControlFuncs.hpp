@@ -15,7 +15,8 @@ void setLeftWheelsToPower(int power);
 void setRightWheelsToPower(int power);
 
 // sets motor target, but does not wait for motor to reach target.
-void driveForDistance(double leftInches, double rightInches);
+void driveForDistance(double leftInches, double rightInches,
+                      int velocity = 100);
 
 bool atDistanceDriveGoal(int threshold);
 
@@ -42,3 +43,5 @@ void turnActuator(int degrees);
 void moveActuatorVelocity(int velocity);
 
 void shootBall();
+
+void delayUntilShooterReady();

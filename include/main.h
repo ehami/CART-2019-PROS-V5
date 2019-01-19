@@ -42,6 +42,8 @@
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
+#include "autonPrograms.hpp"
+#include "lcd.hpp"
 #include "motorControlFuncs.hpp"
 
 // Motor port declarations

@@ -14,12 +14,13 @@
 void autonomous() {
   printf("Auton started\n");
 
-  bool isAutonEnabled = true;
+  lcdScriptExecute();
+
+  bool isAutonEnabled = false;
 
   if (isAutonEnabled) {
-    pros::lcd::set_text(4, "Auton Enabled. Starting.");
-    shootBall();
-    pros::delay(3000);
+
+    // flip cap
     /*driveForDistance(1450, 1450);
     pros::delay(3000);
 
@@ -37,5 +38,5 @@ void autonomous() {
     pros::delay(3000);*/
   }
 
-  printf("Auton ended\n");
+  pros::lcd::set_text(4, "Auton Ended.");
 }

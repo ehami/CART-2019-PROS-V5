@@ -86,6 +86,10 @@ void opcontrol() {
       }
     }
 
+    if (master.get_digital_new_press(DIGITAL_DOWN)) {
+      shootBall();
+    }
+
     pros::delay(20);
   }
 }

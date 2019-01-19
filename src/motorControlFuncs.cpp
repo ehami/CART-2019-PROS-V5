@@ -10,8 +10,8 @@ pros::Motor right_wheels(
     pros::E_MOTOR_ENCODER_DEGREES); // reverses motor, sets gearset, and
                                     // encoder to degree mode
 
-pros::Motor left_lift(LEFT_LIFT_MOTOR_PORT, false);
-pros::Motor right_lift(RIGHT_LIFT_MOTOR_PORT, true);
+pros::Motor left_lift(LEFT_LIFT_MOTOR_PORT, true);
+pros::Motor right_lift(RIGHT_LIFT_MOTOR_PORT, false);
 pros::Motor actuator(ACTUATOR_MOTOR_PORT, pros::E_MOTOR_GEARSET_18, true,
                      pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor shooter(SHOOTER_MOTOR_PORT, pros::E_MOTOR_GEARSET_36, true,
@@ -70,12 +70,12 @@ void setRightWheelsToPower(int power) {
 
 // sets motor target, but does not wait for motor to reach
 // target.
-void driveForDistance(double leftInches, double rightInches) {
-  left_wheels.move_relative(leftInches, 140);
-  left_back_wheels.move_relative(leftInches, 140);
+void driveForDistance(double leftInches, double rightInches, int velocity) {
+  left_wheels.move_relative(leftInches, velocity);
+  left_back_wheels.move_relative(leftInches, velocity);
 
-  right_wheels.move_relative(rightInches, 140);
-  right_back_wheels.move_relative(rightInches, 140);
+  right_wheels.move_relative(rightInches, velocity);
+  right_back_wheels.move_relative(rightInches, velocity);
 }
 
 // returns true/false as to wheter the drive wheels have
@@ -135,4 +135,13 @@ void turnActuator(int degrees) { actuator.move_relative(degrees * 5, 200); }
 
 void moveActuatorVelocity(int velocity) { actuator.move_velocity(velocity); }
 
-void shootBall() { shooter.move_relative(45 * 3, 100); }
+void shootBall() { shooter.move_relative(55 * 3, 100); }
+
+void delayUntilShooterReady() {
+  while (abs(int(shooter.get_position() - shooter.get_target_position())) <
+         10) {
+    printf("%d\n",
+           abs(int(shooter.get_position() - shooter.get_target_position())));
+    pros::delay(20);
+  }
+}
