@@ -3,10 +3,11 @@
 // All of the different autotnomous routines for the normal game and for robot
 // skills
 int selection = 0;
-const char *titles[] = {"Do Nothing", "Just Shoot", "Left Near",
-                        "Left Far",   "Right Near", "Right Far"};
-void (*scripts[])() = {&doNothing, &justShoot, &leftNear,
-                       &leftFar,   &rightNear, &rightFar};
+const char *titles[] = {"Do Nothing",         "Just Shoot", "Left Near",
+                        "Left Far",           "Right Near", "Right Far",
+                        "skillsAutonLeftNear"};
+void (*scripts[])() = {&doNothing, &justShoot, &leftNear,           &leftFar,
+                       &rightNear, &rightFar,  &skillsAutonLeftNear};
 
 void lcdScriptExecute() { scripts[selection](); }
 
@@ -60,7 +61,7 @@ void leftFar() {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
 
-  // CW
+  // CCW
   driveForDistance(-395, 395);
   do {
     pros::delay(20);
@@ -71,7 +72,8 @@ void leftFar() {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
 
-  driveForDistance(-385, 385);
+  // CW
+  driveForDistance(385, -385);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
@@ -114,6 +116,36 @@ void rightNear() {
 
 void rightFar() {
   justShoot();
+  // drive forward
+  driveForDistance(270, 270);
+  do {
+    pros::delay(20);
+  } while (!atDistanceDriveGoal(5));
+
+  // turn CW 90
+  driveForDistance(-395, 395);
+  do {
+    pros::delay(20);
+  } while (!atDistanceDriveGoal(15));
+
+  driveForDistance(-580, -580);
+  do {
+    pros::delay(20);
+  } while (!atDistanceDriveGoal(5));
+  // turn CW 90
+  driveForDistance(-420, 420);
+  do {
+    pros::delay(20);
+  } while (!atDistanceDriveGoal(15));
+
+  driveForDistance(-1400, -1400, 200);
+  do {
+    pros::delay(20);
+  } while (!atDistanceDriveGoal(5));
+}
+
+void skillsAutonLeftNear() {
+  justShoot();
   driveForDistance(-270, -270);
   do {
     pros::delay(20);
@@ -134,7 +166,7 @@ void rightFar() {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-1400, -1400, 200);
+  driveForDistance(-1700, -1700, 200);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));

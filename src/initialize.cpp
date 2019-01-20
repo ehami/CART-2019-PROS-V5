@@ -12,11 +12,11 @@ void on_center_button() {
 }
 
 void on_left_button() {
-  selection = (selection - 1) % 6;
+  selection = (selection - 1) % 7;
   pros::lcd::set_text(2, titles[selection]);
 }
 void on_right_button() {
-  selection = (selection + 1) % 6;
+  selection = (selection + 1) % 7;
   pros::lcd::set_text(2, titles[selection]);
 }
 
