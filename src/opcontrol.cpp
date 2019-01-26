@@ -23,6 +23,8 @@ void opcontrol() {
   int turn;
   double multiple = 1.0;
 
+  unBrakeDriveWheels();
+
   while (true) {
     // Drive Wheels
     power = master.get_analog(ANALOG_LEFT_Y);

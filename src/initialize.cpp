@@ -4,7 +4,7 @@ void on_center_button() {
   static bool pressed = false;
   pressed = !pressed;
   if (pressed) {
-    pros::lcd::set_text(2, "Oooh, touchy~");
+    pros::lcd::set_text(3, "Oooh, touchy~");
   } else {
     pros::lcd::clear_line(2);
   }
@@ -36,7 +36,6 @@ void initialize() {
   pros::lcd::register_btn2_cb(on_right_button);
 
   pros::lcd::set_text(1, "Initialized");
-
   pros::lcd::set_text(2, titles[selection]);
 
   printf("Init finished\n");
