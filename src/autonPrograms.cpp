@@ -2,7 +2,7 @@
 
 // All of the different autotnomous routines for the normal game and for robot
 // skills
-int selection = 5;
+int selection = 3;
 const char *titles[] = {"Do Nothing",         "Just Shoot", "Left Near",
                         "Left Far",           "Right Near", "Right Far",
                         "skillsAutonLeftNear"};
@@ -21,7 +21,7 @@ void justShoot() {
 
   shootBall();              // turns shooter trigger ~1/3 of a turn
   delayUntilShooterReady(); // wait until shooter has shot
-  pros::delay(400); // wait for ball to leave robot to (posibly start moving)
+  pros::delay(400); // wait for ball to leave robot (to posibly start moving)
 }
 
 void doNothing() { // highly decriptive.
@@ -41,7 +41,7 @@ void leftNear() {               // Red, near flags
     pros::delay(20);
   } while (!atDistanceDriveGoal(15)); // account for greater dif. between wheels
 
-  driveForDistance(-550, -550); // drive to line up with platform
+  driveForDistance(-620, -620); // drive to line up with platform
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
@@ -69,7 +69,7 @@ void leftFar() {                // Red, away from flags
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-600, -600);
+  driveForDistance(-570, -570);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
@@ -80,7 +80,7 @@ void leftFar() {                // Red, away from flags
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-1400, -1400, 200);
+  driveForDistance(-1300, -1300, 200);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
@@ -95,17 +95,17 @@ void rightNear() {
   } while (!atDistanceDriveGoal(5));
 
   // turn CW 90
-  driveForDistance(395, -395);
+  driveForDistance(470, -470);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-530, -530);
+  driveForDistance(-560, -560);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
   // turn CW 90
-  driveForDistance(420, -420);
+  driveForDistance(480, -480);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
@@ -119,13 +119,13 @@ void rightNear() {
 void rightFar() {
   justShoot();
   // drive forward
-  driveForDistance(60, 60);
+  driveForDistance(250, 250);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
 
   // turn CW 90
-  driveForDistance(-340, 340);
+  driveForDistance(-390, 390);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
@@ -135,7 +135,7 @@ void rightFar() {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
   // turn CW 90
-  driveForDistance(-420, 420);
+  driveForDistance(-430, 430);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
@@ -150,17 +150,17 @@ void skillsAutonLeftNear() {
 
   justShoot();
   brakeDriveWheels();
-  driveForDistance(-270, -270);
+  driveForDistance(-220, -220);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
 
-  driveForDistance(390, -390);
+  driveForDistance(395, -395);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-580, -580);
+  driveForDistance(-620, -620);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));
@@ -170,7 +170,7 @@ void skillsAutonLeftNear() {
     pros::delay(20);
   } while (!atDistanceDriveGoal(15));
 
-  driveForDistance(-1800, -1800, 200);
+  driveForDistance(-1750, -1750, 150);
   do {
     pros::delay(20);
   } while (!atDistanceDriveGoal(5));

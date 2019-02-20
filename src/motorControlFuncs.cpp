@@ -145,3 +145,12 @@ void delayUntilShooterReady() {
     pros::delay(20);
   }
 }
+
+void printTemps() {
+  pros::lcd::print(4, "LF: %f, LB: %f", left_wheels.get_temperature(),
+                   left_back_wheels.get_temperature());
+  pros::lcd::print(5, "RF: %f, RB: %f", right_wheels.get_temperature(),
+                   right_back_wheels.get_temperature());
+  pros::lcd::print(6, "LL: %f, RL: %f, SHO: %f", left_lift.get_temperature(),
+                   right_lift.get_temperature(), shooter.get_temperature());
+}

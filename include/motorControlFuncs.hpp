@@ -45,3 +45,5 @@ void moveActuatorVelocity(int velocity);
 void shootBall();
 
 void delayUntilShooterReady();
+
+void printTemps();

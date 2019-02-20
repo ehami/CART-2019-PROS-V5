@@ -29,8 +29,6 @@ void opcontrol() {
     // Drive Wheels
     power = master.get_analog(ANALOG_LEFT_Y);
     turn = master.get_analog(ANALOG_RIGHT_X);
-    pros::lcd::print(4, "p:%d t:%d", power, turn);
-    pros::lcd::print(5, "%f", multiple);
 
     if (master.get_digital(DIGITAL_B)) {
       brakeDriveWheels();
@@ -91,6 +89,8 @@ void opcontrol() {
     if (master.get_digital_new_press(DIGITAL_DOWN)) {
       shootBall();
     }
+    printTemps();
+    pros::lcd::print(7, "p:%d t:%d, m: %f", power, turn, multiple);
 
     pros::delay(20);
   }

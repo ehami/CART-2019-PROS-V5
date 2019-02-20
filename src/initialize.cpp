@@ -1,15 +1,6 @@
 #include "main.h"
 
-void on_center_button() {
-  static bool pressed = false;
-  pressed = !pressed;
-  if (pressed) {
-    pros::lcd::set_text(3, "Oooh, touchy~");
-  } else {
-    pros::lcd::clear_line(2);
-  }
-  initMotors();
-}
+void on_center_button() { initMotors(); }
 
 void on_left_button() {
   selection = (selection - 1 + 6) % 7;
@@ -38,7 +29,9 @@ void initialize() {
   pros::lcd::set_text(1, "Initialized");
   pros::lcd::set_text(2, titles[selection]);
 
-  printf("Init finished\n");
+  // std::string text("PROS");
+  // pros::Task my_task(printTemps, (void *)"PROS", TASK_PRIORITY_DEFAULT,
+  //                   TASK_STACK_DEPTH_DEFAULT, "My Task");
 }
 
 /**
