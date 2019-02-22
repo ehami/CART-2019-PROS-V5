@@ -2,7 +2,7 @@
 
 // All of the different autotnomous routines for the normal game and for robot
 // skills
-int selection = 3;
+int selection = 2;
 const char *titles[] = {"Do Nothing",         "Just Shoot", "Left Near",
                         "Left Far",           "Right Near", "Right Far",
                         "skillsAutonLeftNear"};

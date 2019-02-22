@@ -135,7 +135,7 @@ void turnActuator(int degrees) { actuator.move_relative(degrees * 5, 200); }
 
 void moveActuatorVelocity(int velocity) { actuator.move_velocity(velocity); }
 
-void shootBall() { shooter.move_relative(55 * 3, 100); }
+void shootBall() { shooter.move_relative(45 * 3, 100); }
 
 void delayUntilShooterReady() {
   while (abs(int(shooter.get_position() - shooter.get_target_position())) <
