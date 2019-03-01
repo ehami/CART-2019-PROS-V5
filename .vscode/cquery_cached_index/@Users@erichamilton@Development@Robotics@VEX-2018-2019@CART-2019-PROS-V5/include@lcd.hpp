@@ -1,0 +1,2 @@
+void lcdScriptExecute();
+void lcdScriptSelect();
